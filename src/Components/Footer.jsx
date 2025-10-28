@@ -14,6 +14,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   // State to manage which sections are open on mobile
@@ -32,6 +33,14 @@ export default function Footer() {
     }));
   };
 
+  // Quick links with their routes
+  const quickLinks = [
+    { name: "Home", route: "/" },
+    { name: "About Us", route: "/about" },
+    { name: "Blogs", route: "/blogs" },
+    { name: "Contact Us", route: "/contact" },
+  ];
+
   return (
     <footer className="bg-[#002b5b] text-white pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-6">
@@ -43,17 +52,11 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm">
-              {[
-                "Home",
-                "About Us",
-                "Blogs",
-                "Contact Us",
-                "Gallery",
-                "Industrial Training",
-                "Privacy Policy",
-              ].map((item) => (
-                <li key={item} className="hover:text-yellow-400 cursor-pointer">
-                  {item}
+              {quickLinks.map((item) => (
+                <li key={item.name} className="hover:text-yellow-400">
+                  <Link to={item.route} className="cursor-pointer">
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -154,17 +157,11 @@ export default function Footer() {
             </div>
             {openSections.quickLinks && (
               <ul className="space-y-2 text-sm mt-4">
-                {[
-                  "Home",
-                  "Founder Message",
-                  "Career",
-                  "Blog",
-                  "Gallery",
-                  "Industrial Training",
-                  "Privacy Policy",
-                ].map((item) => (
-                  <li key={item} className="hover:text-yellow-400 cursor-pointer">
-                    {item}
+                {quickLinks.map((item) => (
+                  <li key={item.name} className="hover:text-yellow-400">
+                    <Link to={item.route} className="cursor-pointer">
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
